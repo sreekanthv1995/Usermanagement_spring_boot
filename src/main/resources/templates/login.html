@@ -1,0 +1,195 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Login</title>-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">-->
+<!--    <style>-->
+<!--    body {-->
+<!--      background-color: black;-->
+<!--      display: flex;-->
+<!--      justify-content: center;-->
+<!--      align-items: center;-->
+<!--      height: 100vh;-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container mt-5">-->
+<!--    <div class="row justify-content-center">-->
+<!--        <div class="col-md-6">-->
+<!--            <div class="card bg-light">-->
+<!--                <div class="card-body">-->
+<!--                    <h2 class="text-center mb-4">Sign in</h2>-->
+<!--                    <form th:action="@{/login}" method="post" class="login-background">-->
+<!--                        <div class="mb-3 ml-5 mr-5">-->
+<!--                            <input type="text" name="username" class="form-control" placeholder="Username" required="required">-->
+<!--                        </div>-->
+<!--                        <div class="mb-3 ml-5 mr-5">-->
+<!--                            <input type="password" name="password" class="form-control" placeholder="Password" required="required">-->
+<!--                        </div>-->
+<!--                        <div class="mb-3 pl-5 pr-5">-->
+<!--                            <button type="submit" value="Login" class="btn btn-success w-100">Login</button>-->
+<!--                        </div>-->
+<!--                        <p th:if="${error}" class="text-danger text-center">User name or Password Incorrect!!!</p>-->
+<!--                        <p class="text-center">Don't have an account? <a href="/signup">Register here</a></p>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            background-image: url('https://i.pinimg.com/736x/20/44/af/2044afee5820cc34adfac60705825824.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Courier New', monospace;
+        }
+
+        .login-container {
+            max-width: 300px;
+            margin: 0 auto;
+            margin-top: 100px;
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 150px;
+        }
+
+        .login {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .input-tag {
+            color: white;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            background: transparent;
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            background-color: red;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #8D1515;
+        }
+
+        .login-container .message {
+            margin-bottom: 10px;
+            color: red;
+            text-align: center;
+        }
+        .link {
+            margin-top: 5vh;
+        }
+
+        .new_user {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .new_user a {
+            color: red;
+            text-decoration: none;
+        }
+
+        .admin_login a {
+            color: red;
+            text-decoration: none;
+        }
+        .admin_login{
+            color:white;
+        }
+        .error-message{
+            color:red;
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .login-container {
+                margin-top: 50px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <div class="login">
+        <h2>User Login</h2>
+    </div>
+    <div class="form">
+        <form action="" th:action="@{/login}" method="POST">
+            <p th:if="${param.error}" class="text-danger">User name or Password Incorrect</p>
+            <div>
+            <p th:if="${param.logout}" class="text-success">You have been logged out..</p>
+            </div>
+
+<!--            <div th:if="${param.error}">-->
+<!--                <div class="alert alert-danger col-xs-offset-1 col-xs-10">-->
+<!--                    Sorry! You are entered invalid user id or password.-->
+<!--                </div>-->
+<!--            </div>-->
+<!--                <div th:if="${param.logout}">-->
+<!--                    <div class="alert alert-success col-xs-offset-1 col-xs-10">-->
+<!--                       You have been logged out.-->
+<!--                    </div>-->
+<!--                </div>-->
+            <input type="text" name="username" class="input-tag" placeholder="Username" required/>
+            <input type="password" name="password" class="input-tag" placeholder="Password" required/>
+            <input type="submit" value="Login"/>
+            <p th:if="${error}" class="text-danger text-center">User name or Password Incorrect!!</p>
+
+            <!-- <p class="message">Incorrect username or password.</p> -->
+<!--            <div class="container link">-->
+                <p class="new_user">New User
+                    <a href="/signup" class="new_user-link">Click here</a>
+                </p>
+<!--                <p class="admin_login">Admin Login-->
+<!--                    <a th:href="@{/admin}" class="admin_login-link">Click here</a>-->
+<!--                </p>-->
+<!--            </div>-->
+        </form>
+    </div>
+</div>
+</body>
+</html>
